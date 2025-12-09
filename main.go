@@ -39,14 +39,16 @@ func encode(input []byte) []byte {
 		}
 		maxLength := 0
 		maxLengthIndex := -1
-		for k, length := range lengths {
+		for j := i - 1; j >= 0; j-- {
+			distance := i - j
+			length := lengths[j]
 			// We only allow lengths up to 255 (1 byte per length)
-			if i-k > 255 {
+			if distance > 255 {
 				break
 			}
 			if length > maxLength && length < 255 {
 				maxLength = length
-				maxLengthIndex = k
+				maxLengthIndex = j
 			}
 		}
 
