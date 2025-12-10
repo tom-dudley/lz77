@@ -9,16 +9,17 @@ const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non c
 func main() {
 	fmt.Println("Encoding...")
 	fmt.Printf("Input bytes: %d\n", len([]byte(lorem)))
-	encoded := encode([]byte(lorem))
+	encoded := Encode([]byte(lorem))
 	fmt.Printf("Encoded bytes: %d\n", len(encoded))
 	fmt.Println("Decoding...")
 	// s := []byte{65, 66, 67, 0, 3, 2, 68, 69, 70}
 	// encoded := []byte{65, 66, 0, 2, 2, 0, 2, 2}
-	decoded := decode(encoded)
+	decoded := Decode(encoded)
 	fmt.Println(string(decoded))
 }
 
-func encode(input []byte) []byte {
+// Encode with crude LZ77
+func Encode(input []byte) []byte {
 	encoded := []byte{}
 	for i := 0; i < len(input); i++ {
 		lengths := []int{}
@@ -66,7 +67,8 @@ func encode(input []byte) []byte {
 	return encoded
 }
 
-func decode(encoded []byte) []byte {
+// Decode with crude LZ77
+func Decode(encoded []byte) []byte {
 	decoded := []byte{}
 	decodedIndex := 0
 
