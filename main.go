@@ -1,22 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
-
-const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut non condimentum felis, ut viverra lorem. Cras laoreet felis non mi egestas, quis vestibulum turpis bibendum. Vivamus ex leo, cursus euismod leo eget, cursus condimentum velit. Sed aliquet, augue in gravida cursus, urna magna lobortis est, in lobortis orci ligula in lorem. Curabitur fringilla consequat mauris in elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse semper, ligula tempor gravida commodo, nulla mauris mollis metus, a fermentum dolor justo sed arcu. Nam vel varius erat. Sed vehicula aliquet magna. Sed facilisis sem sed ligula tristique mollis."
-
-func main() {
-	fmt.Println("Encoding...")
-	fmt.Printf("Input bytes: %d\n", len([]byte(lorem)))
-	encoded := Encode([]byte(lorem))
-	fmt.Printf("Encoded bytes: %d\n", len(encoded))
-	fmt.Println("Decoding...")
-	// s := []byte{65, 66, 67, 0, 3, 2, 68, 69, 70}
-	// encoded := []byte{65, 66, 0, 2, 2, 0, 2, 2}
-	decoded := Decode(encoded)
-	fmt.Println(string(decoded))
-}
+package lz77
 
 // Encode with crude LZ77
 func Encode(input []byte) []byte {
